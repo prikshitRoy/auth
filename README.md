@@ -10,3 +10,7 @@ trpc:
 keysely:
 `yarn add kysely`
 `yarn add -D keysely-codegen`
+
+prettier
+
+`yarn add -D prettier-plugin-embed prettier-plugin-sql prettier-plugin-tailwindcss`
