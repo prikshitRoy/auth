@@ -1,7 +1,7 @@
 # How to Use Firebase Auth in Nextjs SSR
 
 **Tech Stack**
-Nextjs-14 , Firebase , trpc , zod, kysely , prettier
+Nextjs-14 , Firebase , trpc , zod, kysely , prettier, docker
 
 trpc:
 
@@ -14,3 +14,7 @@ keysely:
 prettier
 
 `yarn add -D prettier-plugin-embed prettier-plugin-sql prettier-plugin-tailwindcss`
+
+docker
+Adding a version field in a Docker Compose file is optional for newer versions of Docker Compose. Previously, it was required, but since Compose V2, the version field is no longer necessary.
+check version: `docker compose version`

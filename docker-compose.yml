@@ -1,0 +1,16 @@
+services:
+  db:
+    container_name: firebase_auth
+    image: postgres
+    restart: no
+    environment:
+      POSTGRES_USER: firebase
+      POSTGRES_PASSWORD: firebase
+      POSTGRES_DB: firebase
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
