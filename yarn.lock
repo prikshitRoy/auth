@@ -941,6 +941,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/client@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "@prisma/client@npm:6.4.1"
+  peerDependencies:
+    prisma: "*"
+    typescript: ">=5.1.0"
+  peerDependenciesMeta:
+    prisma:
+      optional: true
+    typescript:
+      optional: true
+  checksum: 10c0/fe6c322b473d5ebc3926aafb0a149cb08d9d0df46af71568230fd087e85017f24a7a1e4a09e5817359db494ff7ce7d37ad56459c11c39da98412757acb7f16e9
+  languageName: node
+  linkType: hard
+
 "@prisma/debug@npm:6.4.1":
   version: 6.4.1
   resolution: "@prisma/debug@npm:6.4.1"
@@ -1867,6 +1882,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "firebase-auth-in-ssr@workspace:."
   dependencies:
+    "@prisma/client": "npm:^6.4.1"
     "@t3-oss/env-nextjs": "npm:^0.12.0"
     "@tanstack/react-query": "npm:^5.66.9"
     "@trpc/client": "npm:^11.0.0-rc.795"

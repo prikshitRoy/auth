@@ -21,10 +21,25 @@ Adding a version field in a Docker Compose file is optional for newer versions o
 
 check version: `docker compose version`
 
-*Prisma*
+*Prisma and Prisma Client*
 
 `yarn add -D prisma`
+
+`yarn add @prisma/client`
 
 create necessary prisma configuration files
 
 `yarn dlx prisma init`
+
+Apply schema to db
+
+`npx prisma generate`
+Note: prisma db push will not work as it is deprecated.
+
+create migration only
+
+`npx prisma migrate dev --name add_users_table --create-only`
+
+apply migration
+
+`npx prisma migrate dev`
