@@ -43,3 +43,7 @@ create migration only
 apply migration
 
 `npx prisma migrate dev`
+
+generate types for kysely
+
+`yarn db:codegen`
