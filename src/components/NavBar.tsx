@@ -1,11 +1,5 @@
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
+import { SignOutButton, SignInButton } from "@clerk/nextjs";
 
 export default async function NavBar() {
   const { userId } = await auth();
@@ -16,21 +10,16 @@ export default async function NavBar() {
           {userId && (
             <>
               <div className="p-2 border border-blue-800 rounded-full bg-blue-200">
-                U
+                User
               </div>
             </>
           )}
 
-          {!userId && (
-            <div className="flex gap-1">
-              <div className="p-2 border border-blue-800 rounded-full bg-blue-200">
-                <SignInButton />
-              </div>
-              <div className="p-2 border border-blue-800 rounded-full bg-blue-200">
-                <SignUpButton />
-              </div>
+          <div className="flex gap-1 ml-0">
+            <div className="p-2 border border-blue-800 rounded-full bg-blue-200">
+              {userId ? <SignOutButton /> : <SignInButton />}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </nav>
