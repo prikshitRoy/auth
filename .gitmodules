@@ -1,0 +1,6 @@
+[submodule "clark-auth-nextjs-ssr"]
+	path = clark-auth-nextjs-ssr
+	url = https://github.com/prikshitRoy/clark-auth-nextjs-ssr.git
+[submodule "firebase-auth-in-ssr"]
+	path = firebase-auth-in-ssr
+	url = https://github.com/prikshitRoy/firebase-auth-in-ssr.git
