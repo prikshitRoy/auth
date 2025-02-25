@@ -1,0 +1,48 @@
+{
+  "name": "firebase-auth-in-ssr",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:codegen": "kysely-codegen --dialect postgres",
+    "db:codegen:verify": "kysely-codegen --dialect postgres --verify"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "@tanstack/react-query": "^5.66.9",
+    "@trpc/client": "^11.0.0-rc.795",
+    "@trpc/next": "^11.0.0-rc.795",
+    "@trpc/react-query": "^11.0.0-rc.795",
+    "@trpc/server": "^11.0.0-rc.795",
+    "firebase": "^11.3.1",
+    "kysely": "^0.27.5",
+    "luxon": "^3.5.0",
+    "next": "14.2.24",
+    "pg": "^8.13.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "superjson": "^2.2.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3",
+    "@types/node": "^20",
+    "@types/pg": "^8",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "kysely-codegen": "^0.17.0",
+    "postcss": "^8",
+    "prettier": "3.5.1",
+    "prettier-plugin-embed": "^0.4.15",
+    "prettier-plugin-sql": "^0.18.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prisma": "^6.4.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
