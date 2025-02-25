@@ -337,6 +337,7 @@ __metadata:
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
+    jose: "npm:^6.0.6"
     next: "npm:14.2.24"
     postcss: "npm:^8"
     react: "npm:^18"
@@ -834,6 +835,13 @@ __metadata:
   bin:
     jiti: bin/jiti.js
   checksum: 10c0/77b61989c758ff32407cdae8ddc77f85e18e1a13fc4977110dbd2e05fc761842f5f71bce684d9a01316e1c4263971315a111385759951080bbfe17cbb5de8f7a
+  languageName: node
+  linkType: hard
+
+"jose@npm:^6.0.6":
+  version: 6.0.6
+  resolution: "jose@npm:6.0.6"
+  checksum: 10c0/f05c42e295dffeaa9e8c842da70567846a352f9971979ff725a6c2271e7741ab8e31c193fd4574985f7ce01567a6141f5e6ea9a5d766b189a27d2ad9a0d8e67d
   languageName: node
   linkType: hard
 
