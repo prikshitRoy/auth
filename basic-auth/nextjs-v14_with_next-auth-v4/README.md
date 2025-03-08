@@ -19,3 +19,7 @@ yarn add -D prisma
 ```
 yarn prisma init
 ```
+
+```
+yarn add @prisma/client next-auth @next-auth/prisma-adapter @tailwindcss/forms react-hot-toast autoprefixer axios bcrypt
+```
