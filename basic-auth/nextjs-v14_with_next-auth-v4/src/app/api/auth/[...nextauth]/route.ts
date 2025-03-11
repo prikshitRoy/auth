@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
@@ -44,25 +45,50 @@ export const authOptions = {
 
     // https://next-auth.js.org/providers/credentials
     CredentialsProvider({
-      name: "Credentials",
+      name: "credentials",
       credentials: {
         email: { label: "Email", type: "text", placeholder: "jsmith" },
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
+        username: {
+          label: "Username",
+          type: "text",
+          placeholder: "John Smith",
+        },
       },
-      async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", name: "Smith", email: "jsmith@example.com" };
-
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user;
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
-          return null;
-
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+      async authorize(credentials) {
+        if (!credentials) {
+          throw new Error("No credentials provided");
         }
+
+        // Check to see if email and password are there
+        if (!credentials.email || !credentials.password) {
+          throw new Error("Please enter an email and password");
+        }
+
+        // Check to see if user exists
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
+
+        // If no user was found
+        if (!user || !user?.hashedPassword) {
+          throw new Error("No user found");
+        }
+
+        // Check to see if password matches
+        const passwordMatch = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword
+        );
+
+        // If password does not match
+        if (!passwordMatch) {
+          throw new Error("Incorrect password");
+        }
+
+        return user;
       },
     }),
   ],
