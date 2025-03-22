@@ -1,9 +1,7 @@
-import { getFirestore } from "firebase-admin/firestore";
-
-const firestore = getFirestore();
+import { db } from "@/app/lib/firestore";
 
 export const getLinks = async () => {
-  const linkSnapshort = await firestore.collection("users").get();
+  const linkSnapshort = await db.collection("users").get();
   const documents = linkSnapshort.docs.map((link) => ({
     name: link.data().name,
     email: link.data().email,
