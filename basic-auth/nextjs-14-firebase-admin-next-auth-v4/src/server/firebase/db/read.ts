@@ -1,6 +1,7 @@
-import { db } from "@/app/lib/firestore";
+import { db } from "@/server/firebase/firestore";
 
-export const getLinks = async () => {
+//! Reading Data from Fireatore Database
+export const getUserData = async () => {
   const linkSnapshort = await db.collection("users").get();
   const documents = linkSnapshort.docs.map((link) => ({
     name: link.data().name,
