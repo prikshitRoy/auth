@@ -2,6 +2,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 import { getUserData } from "../server/firebase/db/read";
+import WriteCityDataButton from "@/components/button/WriteCityData";
+import UserDataButton from "@/components/button/UserData";
 
 export default async function Home() {
   // Fetch the server session using NextAuth
@@ -20,7 +22,8 @@ export default async function Home() {
             {data.name}
           </div>
         ))}
-        {/* <AddDataButton /> */}
+        <WriteCityDataButton />
+        <UserDataButton />
       </main>
     </div>
   );
