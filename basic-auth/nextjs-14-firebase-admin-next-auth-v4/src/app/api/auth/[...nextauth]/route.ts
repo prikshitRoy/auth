@@ -3,29 +3,13 @@ import type { JWT } from "next-auth/jwt";
 import type { Account, Session, User } from "next-auth";
 import { FirestoreAdapter } from "@auth/firebase-adapter";
 import { firestore } from "@/server/firebase/firestore";
+import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
-import { EmailProvider } from "next-auth/providers/email";
+import { getCredentials } from "@/server/next-auth/OAuthProvider";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-type Provider = "GOOGLE" | "GITHUB";
-
-// TODO:
-// Add Email Provider
-function getCredentials(provider: Provider) {
-  const clientId = process.env[`${provider}_CLIENT_ID`];
-  const clientSecret = process.env[`${provider}_CLIENT_SECRET`];
-
-  if (!clientId || clientId.length === 0) {
-    throw new Error(`No clientID for ${provider} provider set`);
-  }
-
-  if (!clientSecret || clientSecret.length === 0) {
-    throw new Error(`No clientSecret for ${provider} provider set`);
-  }
-
-  return { clientId, clientSecret };
-}
+// TODO: Add Email Provider
 
 export const authOptions = {
   adapter: FirestoreAdapter(firestore),
