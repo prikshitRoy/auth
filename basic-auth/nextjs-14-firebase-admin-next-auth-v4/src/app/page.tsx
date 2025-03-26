@@ -1,30 +1,20 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import ServerSession from "@/components/UserSession/UserSession";
 
-import { getUserData } from "../server/firebase/db/read";
-import WriteCityDataButton from "@/components/button/WriteCityData";
-import UserDataButton from "@/components/button/UserData";
+import UserInfo from "@/components/UserInfo/UserInfo";
 
 export default async function Home() {
-  // Fetch the server session using NextAuth
-  const session = await getServerSession(authOptions);
-
-  const links = await getUserData();
-
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        Hii from Nextjs 14
-        <pre className="w-fit">{JSON.stringify(session, null, 2)}</pre>
-        {links?.map((data) => (
-          <div className="h-0">
-            {data.email}
-            {data.name}
-          </div>
-        ))}
-        <WriteCityDataButton />
-        <UserDataButton />
-      </main>
+    <div className="flex flex-col px-2 w-fit h-full">
+      <div>
+        <h1 className="text-2xl underline font-bold">
+          Next-Auth-v4 with Firebase Admin SDK
+        </h1>
+        <div className="bg-gray-600">
+          TechStack: Nextjs-v14.2.25 + Next-Auth-v4 + Firebase
+        </div>
+      </div>
+      <ServerSession />
+      <UserInfo />
     </div>
   );
 }

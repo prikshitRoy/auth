@@ -1,3 +1,5 @@
+"use server";
+
 import { db } from "@/server/firebase/firestore";
 
 //! Reading Data from Fireatore Database
