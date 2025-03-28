@@ -34,6 +34,7 @@ export const authOptions = {
 
         return {
           ...profile,
+          // NOTE: Convert profile.id to a string to avoid type mismatch errors
           id: profile.id.toString(),
           role: userRole,
         };
@@ -41,14 +42,39 @@ export const authOptions = {
       clientId: getCredentials("GITHUB").clientId,
       clientSecret: getCredentials("GITHUB").clientSecret,
     }),
+    GoogleProvider({
+      profile(profile) {
+        console.log("Provide from Google OAuth:", profile);
+
+        let userRole = "Github User";
+        if (profile?.email === "parikshitroy01@gmail.com") {
+          userRole = "admin";
+        }
+
+        return {
+          ...profile,
+          // NOTE: The returned object is missing the 'id' property.
+          // Explicitly include an 'id' field using 'profile.sub',
+          // which typically represents the unique user ID in Google OAuth.
+          id: profile.sub,
+          role: userRole,
+        };
+      },
+      clientId: getCredentials("GOOGLE").clientId,
+      clientSecret: getCredentials("GOOGLE").clientSecret,
+    }),
   ],
   callbacks: {
     async jwt({ token, user }: { token: JWT; user: User }) {
-      if (user) token.role = user.role;
+      if (user) {
+        token.role = user.role;
+      }
       return token;
     },
     async session({ session, token }: { session: Session; token: JWT }) {
-      if (session.user) session.user.role = token.role;
+      if (session.user) {
+        session.user.role = token.role;
+      }
       return session;
     },
   },

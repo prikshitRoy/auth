@@ -1,9 +1,9 @@
 import NextAuth, { DefaultSession, DefaultUser } from "next-auth";
 import { JWT, DefaultJWT } from "next-auth/jwt";
 
-// TODO: What is import type { Account, Session, User, Profile } from "next-auth";
-
 type userRole = string | null;
+
+// TODO: use share type for userRole in route.ts and next-auth.d.ts
 
 declare module "next-auth" {
   interface User extends DefaultUser {
